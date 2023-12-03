@@ -15,10 +15,11 @@ class adv():
         room = self.rooms[self.current_room_id]
         print(f"> {room['name']}\n\n{room['desc']}")
         if 'items' in room and len(room['items']) > 0:
-            print(f"Items: {', '.join(room['items'])}")
-        print(f"\nExits: {', '.join(room['exits'])}\n")
+            print(f"\nItems: {', '.join(room['items'])}")
+        print(f"\nExits: {' '.join(room['exits'])}\n")
 
     def go(self, direction):
+        direction = direction.lower()
         room = self.rooms[self.current_room_id]
         possible_matches = [d for d in room['exits'] if d.startswith(direction)]
 
