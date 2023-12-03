@@ -24,14 +24,16 @@ class adv():
 
         if direction in room['exits']:
             self.current_room_id = room['exits'][direction]
+            print("You go "+direction+".\n")
             self.display_room()
         elif len(possible_matches) == 1:
             self.current_room_id = room['exits'][possible_matches[0]]
+            print("You go "+direction+".\n")
             self.display_room()
         elif len(possible_matches) > 1:
             print(f"Did you want to go {', '.join(possible_matches)}?")
         else:
-            print(f"There's no way to go {direction}.\n")
+            print(f"There's no way to go {direction}.")
 
     def look(self):
         self.display_room()
@@ -98,6 +100,9 @@ def main():
                 break
 
         if verb == 'go':
+            if target == None:
+                print("Sorry, you need to 'go' somewhere.")
+                continue
             adventure.go(target)
         elif verb == 'look':
             adventure.look()
