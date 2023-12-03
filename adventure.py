@@ -6,7 +6,7 @@ class adv():
         self.load_map(mapPath)
         self.current_room_id = 0
         self.inventory = []
-
+        self.verb_list = ['go', 'look', 'get', 'drop', 'inventory', 'quit', 'help']
     def load_map(self, mapPath):
         with open(mapPath) as file:
             self.rooms = json.load(file)
@@ -19,6 +19,9 @@ class adv():
         print(f"\nExits: {' '.join(room['exits'])}\n")
 
     def go(self, direction):
+        '''
+        Use this keyword to go to any other room. Usage: go ___
+        '''
         direction = direction.lower()
         room = self.rooms[self.current_room_id]
         possible_matches = [d for d in room['exits'] if d.startswith(direction)]
@@ -40,6 +43,9 @@ class adv():
             print(f"There's no way to go {direction}.")
 
     def look(self):
+        '''
+        Use this keyword to look in which room you are. Usage: look ___
+        '''
         self.display_room()
 
     def get(self, item):
@@ -83,8 +89,22 @@ class adv():
 
     def help(self):
         print("You can run the following commands:")
-        for verb in ['go', 'look', 'get', 'drop', 'inventory', 'quit', 'help']:
-            print(f"  {verb} ...")
+
+        for verb in self.verb_list:
+            func = getattr(adv,verb,None)
+            if func:
+
+                print(f"  {verb:10} {func.__doc__.strip()}")
+                
+    def handle_direction(self,input_verb):
+        room = self.rooms[self.current_room_id]
+        possible_directions = list(filter(lambda x: input_verb in x,room['exits'] ))
+        # print(possible_directions)
+        if len(possible_directions) > 0:
+            self.go(input_verb)
+            
+        else:
+            print("Invalid command. Type 'help' for available commands.\n")
 
 def main():
     if len(sys.argv) != 2:
@@ -104,11 +124,14 @@ def main():
         verb = user_input[0].lower()
         target = user_input[1] if len(user_input) > 1 else None
 
+        
+        
+
         for full_verb, abbreviations in verb_abbreviations.items():
             if verb in abbreviations or verb == full_verb:
                 verb = full_verb
                 break
-
+        
         if verb == 'go':
             if target == None:
                 print("Sorry, you need to 'go' somewhere.")
@@ -128,7 +151,7 @@ def main():
             print("Goodbye!")
             sys.exit(0)
         else:
-            print("Invalid command. Type 'help' for available commands.\n")
-
+            adventure.handle_direction(verb)
+            
 if __name__ == "__main__":
     main()
