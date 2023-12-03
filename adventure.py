@@ -32,7 +32,10 @@ class adv():
             print("You go "+direction+".\n")
             self.display_room()
         elif len(possible_matches) > 1:
-            print(f"Did you want to go {', '.join(possible_matches)}?")
+            last_word = possible_matches[-1]
+            words_till_last = possible_matches[0:-1]
+
+            print(f"Did you want to go {', '.join(words_till_last)} or {last_word}?")
         else:
             print(f"There's no way to go {direction}.")
 
@@ -42,6 +45,8 @@ class adv():
     def get(self, item):
         room = self.rooms[self.current_room_id]
         possible_matches = [i for i in room.get('items', []) if i.startswith(item)]
+        last_word = possible_matches[-1]
+        words_till_last = possible_matches[0:-1]
 
         if len(possible_matches) == 1:
             item = possible_matches[0]
@@ -49,7 +54,7 @@ class adv():
             room['items'].remove(item)
             print(f"You pick up the {item}.\n")
         elif len(possible_matches) > 1:
-            print(f"Did you want to get {', '.join(possible_matches)}?")
+            print(f"Did you want to get the {', '.join(words_till_last)} or the {last_word}?")
         else:
             print(f"There's no {item} anywhere.\n")
 
