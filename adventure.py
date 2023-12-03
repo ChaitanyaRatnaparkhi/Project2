@@ -45,18 +45,20 @@ class adv():
     def get(self, item):
         room = self.rooms[self.current_room_id]
         possible_matches = [i for i in room.get('items', []) if i.startswith(item)]
-        last_word = possible_matches[-1]
-        words_till_last = possible_matches[0:-1]
-
+        if item == None:
+            print("Sorry, you need to 'get' something.")
+            return
         if len(possible_matches) == 1:
             item = possible_matches[0]
             self.inventory.insert(0,item)
             room['items'].remove(item)
             print(f"You pick up the {item}.")
         elif len(possible_matches) > 1:
+            last_word = possible_matches[-1]
+            words_till_last = possible_matches[0:-1]
             print(f"Did you want to get the {', '.join(words_till_last)} or the {last_word}?")
         else:
-            print(f"There's no {item} anywhere.\n")
+            print(f"There's no {item} anywhere.")
 
     def drop(self, item):
         room = self.rooms[self.current_room_id]
@@ -77,7 +79,7 @@ class adv():
             for item in self.inventory:
                 print(f"  {item}")
         else:
-            print("You're not carrying anything.\n")
+            print("You're not carrying anything.")
 
     def help(self):
         print("You can run the following commands:")
