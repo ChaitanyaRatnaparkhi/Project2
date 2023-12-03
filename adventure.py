@@ -50,9 +50,9 @@ class adv():
 
         if len(possible_matches) == 1:
             item = possible_matches[0]
-            self.inventory.append(item)
+            self.inventory.insert(0,item)
             room['items'].remove(item)
-            print(f"You pick up the {item}.\n")
+            print(f"You pick up the {item}.")
         elif len(possible_matches) > 1:
             print(f"Did you want to get the {', '.join(words_till_last)} or the {last_word}?")
         else:
@@ -70,8 +70,10 @@ class adv():
             print("No item " + item + " in inventory to drop.")
 
     def show_inventory(self):
+
         if self.inventory:
             print("Inventory:")
+       
             for item in self.inventory:
                 print(f"  {item}")
         else:
