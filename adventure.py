@@ -13,7 +13,7 @@ class adv():
 
     def display_room(self):
         room = self.rooms[self.current_room_id]
-        print(f"> {room['name']}\n\n{room['desc']}\n")
+        print(f"> {room['name']}\n\n{room['desc']}")
         if 'items' in room and len(room['items']) > 0:
             print(f"Items: {', '.join(room['items'])}")
         print(f"\nExits: {', '.join(room['exits'])}\n")
