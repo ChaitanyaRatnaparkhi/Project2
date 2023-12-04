@@ -1,0 +1,92 @@
+[
+  {
+    "name": "The Enchanted Forest",
+    "desc": "You find yourself in a mystical forest with ancient trees and magical creatures.",
+    "exits": { "north": 1, "east": 2 }
+  },
+  {
+    "name": "The Whispering Cave",
+    "desc": "A dark cave with walls that seem to whisper ancient secrets.",
+    "exits": { "west": 0, "east": 3 }
+  },
+  {
+    "name": "Crystal Lake",
+    "desc": "A serene lake with crystal-clear water, reflecting the beauty of the surrounding nature.",
+    "exits": { "west": 1, "south": 4 },
+    "items": ["crystal"]
+  },
+  {
+    "name": "Dragon's Lair",
+    "desc": "A cavernous lair where a mighty dragon resides, guarding its treasures.",
+    "exits": { "north": 2, "west": 5 },
+    "items": ["dragon scale"]
+  },
+  {
+    "name": "Mystic Grove",
+    "desc": "A peaceful grove filled with colorful flowers and magical energy.",
+    "exits": { "north": 2, "east": 6 }
+  },
+  {
+    "name": "Goblin Hideout",
+    "desc": "A hidden hideout where mischievous goblins gather to plan their antics.",
+    "exits": { "east": 4, "south": 7 },
+    "items": ["goblin treasure"]
+  },
+  {
+    "name": "Eternal Waterfall",
+    "desc": "A majestic waterfall that seems to flow endlessly from the heavens.",
+    "exits": { "west": 5, "south": 8 }
+  },
+  {
+    "name": "Phoenix Roost",
+    "desc": "A high peak where a mythical phoenix rests, its fiery feathers glowing.",
+    "exits": { "north": 6, "west": 9 },
+    "items": ["phoenix feather"]
+  },
+  {
+    "name": "Cursed Swamp",
+    "desc": "A swampy area shrouded in an eerie mist, with strange sounds echoing around.",
+    "exits": { "east": 8, "south": 10 },
+    "items": ["cursed amulet"]
+  },
+  {
+    "name": "Hidden Temple",
+    "desc": "An ancient temple hidden deep within the forest, filled with mysterious artifacts.",
+    "exits": { "north": 9, "west": 11 },
+    "items": ["ancient relic"]
+  },
+  {
+    "name": "The Forgotten Altar",
+    "desc": "A crumbling altar with faded symbols, hinting at a long-forgotten ritual.",
+    "exits": { "east": 10, "south": 12 }
+  },
+  {
+    "name": "Celestial Observatory",
+    "desc": "A tower where astronomers once observed the stars, now in ruins.",
+    "exits": { "north": 11, "west": 13 },
+    "items": ["astronomer's telescope"]
+  },
+  {
+    "name": "Abandoned Library",
+    "desc": "A dusty library filled with forgotten knowledge and ancient tomes.",
+    "exits": { "east": 12, "south": 14 },
+    "items": ["ancient scroll"]
+  },
+  {
+    "name": "Magician's Workshop",
+    "desc": "A workshop where magicians once crafted powerful spells and enchanted objects.",
+    "exits": { "west": 13, "south": 15 },
+    "items": ["magic wand"]
+  },
+  {
+    "name": "Enigmatic Chamber",
+    "desc": "A mysterious chamber with walls adorned with cryptic symbols.",
+    "exits": { "north": 14, "west": 16 }
+  },
+  {
+    "name": "Timeless Garden",
+    "desc": "A garden frozen in time, where flowers bloom eternally in vibrant colors.",
+    "exits": { "east": 15, "south": 17 },
+    "items": ["timeless flower"]
+  }
+]

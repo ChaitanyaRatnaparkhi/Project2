@@ -44,11 +44,14 @@ class adv():
 
     def look(self):
         '''
-        Use this keyword to look in which room you are. Usage: look ___
+        Use this keyword to look in which room you are. Usage: look
         '''
         self.display_room()
 
     def get(self, item):
+        '''
+        Use this keyword to pick up the objects. Usage: get ___
+        '''
         room = self.rooms[self.current_room_id]
         possible_matches = [i for i in room.get('items', []) if i.startswith(item)]
         if item == None:
@@ -67,6 +70,9 @@ class adv():
             print(f"There's no {item} anywhere.")
 
     def drop(self, item):
+        '''
+        Use this keyword to drop whatever is picked up. Usage: drop ___
+        '''
         room = self.rooms[self.current_room_id]
         if item in self.inventory:
             if 'items' in room:
@@ -78,6 +84,9 @@ class adv():
             print("No item " + item + " in inventory to drop.")
 
     def show_inventory(self):
+        '''
+        Use this keyword to check what's in inventory. Usage: inventory ___
+        '''
 
         if self.inventory:
             print("Inventory:")
@@ -88,14 +97,22 @@ class adv():
             print("You're not carrying anything.")
 
     def help(self):
+        '''
+        Use this keyword to get help with available commands. Usage: help       
+        '''
         print("You can run the following commands:")
 
         for verb in self.verb_list:
+            if verb =="inventory":
+                func = getattr(adv,'show_inventory',None)
+                if func:
+                    
+                    print(f"  {verb:10} {func.__doc__.strip()}")
             func = getattr(adv,verb,None)
-            if func:
 
+            if func:
                 print(f"  {verb:10} {func.__doc__.strip()}")
-                
+
     def handle_direction(self,input_verb):
         room = self.rooms[self.current_room_id]
         possible_directions = list(filter(lambda x: input_verb in x,room['exits'] ))
